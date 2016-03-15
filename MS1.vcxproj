@@ -13,12 +13,15 @@
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
-    <ClCompile Include="ms2_tester.cpp" />
+    <ClCompile Include="MyFile.cpp" />
+    <ClCompile Include="StreamableTester.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="general.h" />
+    <ClInclude Include="MyFile.h" />
+    <ClInclude Include="Streamable.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{538EA14C-D598-4EA3-A67F-E7C0959515B1}</ProjectGuid>
