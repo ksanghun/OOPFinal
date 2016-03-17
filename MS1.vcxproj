@@ -14,6 +14,7 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="MyFile.cpp" />
+    <ClCompile Include="Product.cpp" />
     <ClCompile Include="StreamableTester.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -21,6 +22,7 @@
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="general.h" />
     <ClInclude Include="MyFile.h" />
+    <ClInclude Include="Product.h" />
     <ClInclude Include="Streamable.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
