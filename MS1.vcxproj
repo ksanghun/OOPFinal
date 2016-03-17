@@ -13,9 +13,9 @@
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
+    <ClCompile Include="ms4Tester.cpp" />
     <ClCompile Include="MyFile.cpp" />
     <ClCompile Include="Product.cpp" />
-    <ClCompile Include="StreamableTester.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />

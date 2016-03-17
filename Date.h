@@ -9,6 +9,8 @@
 #ifndef SICT_DATE_H__
 #define SICT_DATE_H__
 #include <iostream>
+#include "general.h"
+
 namespace sict{
 
 	class Date{

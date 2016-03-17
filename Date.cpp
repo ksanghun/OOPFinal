@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 #include "Date.h"
-#include "general.h"
+
 
 #define MAX_INBUFFER_SIZE 64
 
