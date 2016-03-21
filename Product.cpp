@@ -18,23 +18,25 @@ namespace sict{
 		setEmpty();
 	}
 
-	Product::Product(const char* csku, const char* cname, double dprice, int iqtyNeeded, bool bisTaxed) :
-		name_(nullptr), taxed_(bisTaxed),
-		quantity_(0), qtyNeeded_(iqtyNeeded), price_(dprice){
+	Product::Product(const char* csku, const char* cname,  double dprice, int iqtyNeeded, bool bisTaxed)
+		:name_(nullptr), quantity_(0){
 
 		sku(csku);
-		name(cname);			
+		name(cname);	
+		price(dprice);
+		qtyNeeded(iqtyNeeded);
+		taxed(bisTaxed);
 	}
 
 	Product::Product(Product& P)
 	{
-		
+		setValue(P);
 	}
 
 
 	Product::~Product()
 	{
-
+		clear();
 	}
 
 	void Product::setValue(const Product& P)
@@ -49,6 +51,7 @@ namespace sict{
 
 	Product& Product::operator = (const Product& P)
 	{
+		clear();
 		setValue(P);
 		return *this;
 	}
@@ -70,37 +73,34 @@ namespace sict{
 	}
 
 	bool Product::isEmpty() const
-	{
-		return true;
-		//return sku_[0] == 0 && name_ == nullptr && price_ == 0 && !taxed_ && quantity_ == 0 && qtyNeeded_ == 0;
+	{		
+		return !(sku_[0] || name_ || price_ || taxed_ || quantity_ || quantity_ || qtyNeeded_);
 	}
 
 	double Product::cost() const
 	{
-		return price();
+		return ((taxed_) ? price_*TAX : price_);		
 	}
 	
-	void Product::sku(const char* value)
+	void Product::sku(const char* csku)
 	{
-		if (value){
-			strncpy(sku_, value, MAX_SKU_LEN);
+		if (csku){
+			strncpy(sku_, csku, MAX_SKU_LEN);
 			sku_[MAX_SKU_LEN] = 0;
 		}
 	}
 	void Product::price(double value)
 	{
-		price(value);
+		price_ = value;
 		
 	}
-	void Product::name(const char* value)
+	void Product::name(const char* cname)
 	{
-		if (value){
-			int len = strlen(value) + 1;
-			clear();
+		if (cname){
+			int len = strlen(cname) + 1;
 			name_ = new char[len];
-			strcpy(name_, value);
+			strcpy(name_, cname);
 		}
-
 	}
 	void Product::quantity(int value)
 	{
@@ -143,7 +143,7 @@ namespace sict{
 
 	bool Product::operator==(const char* ch)
 	{
-		return (strcmp(sku_, ch) == 0);
+		return !strcmp(sku_, ch);
 	}
 	int Product::operator+=(int value)
 	{
@@ -154,16 +154,8 @@ namespace sict{
 		return quantity_ -= value;
 	}
 
-	std::istream& Product::read(std::istream& istr)
-	{
-		return istr;
-	}
-	std::ostream& Product::write(std::ostream& ostr)const
-	{
-		return ostr;
-	}
 
-	//Non-member IO operator overloads: 
+	//Non-member operator overloads: 
 	double operator+=(double& dvalue, const Product& P)
 	{
 		dvalue += P.price()*P.quantity();
@@ -171,9 +163,10 @@ namespace sict{
 	}
 
 
+	//Non-member IO operator overloads: 
 	std::ostream& operator<<(std::ostream& ostr, const Product& P)
 	{		
-		return P.write(ostr);
+		return P.write(ostr, true);
 	}
 	std::istream& operator>>(std::istream& istr, Product& P)
 	{

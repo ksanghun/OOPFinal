@@ -30,28 +30,29 @@ namespace sict{
 
 	public:
 		Product();
-		Product(const char* csku, const char* cname, double dprice = 0.0, int iqtyNeeded = 0, bool bisTaxed = true );
+		Product(const char* csku, const char* cname,  double dprice = 0.0, int iqtyNeeded =0, bool bisTaxed = true);
 		Product(Product& P);
 
-		virtual ~Product();
+		~Product();
 
+		// Getter ================//
 		const char* sku() const;
 		double		price() const;
 		const char*	name() const;
 		int			quantity() const;
 		bool		taxed( ) const;
 		int			qtyNeeded() const;
-
 		bool		isEmpty() const;
+		// Setter =====================//
+		void		sku(const char* csku);
+		void		price(double value);
+		void		name(const char* cname);
+		void		quantity(int value);
+		void		taxed(bool value);
+		void		qtyNeeded(int value);
+		//===============================//
+
 		double		cost() const;
-
-		void sku(const char* value);
-		void price(double value);
-		void name(const char* value);
-		void quantity(int value);
-		void taxed(bool value);
-		void qtyNeeded(int value);
-
 
 
 		Product& operator=(const Product& P);
@@ -60,13 +61,12 @@ namespace sict{
 		int operator+=(int value);
 		int operator-=(int value);
 
-		std::istream& read(std::istream& istr);
-		std::ostream& write(std::ostream& ostr)const;
 	};
 
-	//Non-member IO operator overloads: 
+	//Non-member operator overloads: 
 	double operator+=(double& dvalue, const Product& P);
 
+	//Non-member IO operator overloads: 
 	std::ostream& operator<<(std::ostream& ostr, const Product& P);
 	std::istream& operator>>(std::istream& istr, Product& P);
 
