@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 #include "Product.h"
+#include <string.h>
 
 
 namespace sict{
@@ -79,7 +80,7 @@ namespace sict{
 
 	double Product::cost() const
 	{
-		return ((taxed_) ? price_*TAX : price_);		
+		return ((taxed_) ? price_*(1.0+TAX) : price_);		
 	}
 	
 	void Product::sku(const char* csku)
@@ -158,7 +159,7 @@ namespace sict{
 	//Non-member operator overloads: 
 	double operator+=(double& dvalue, const Product& P)
 	{
-		dvalue += P.price()*P.quantity();
+		dvalue += P.cost()*P.quantity();
 		return dvalue;
 	}
 
