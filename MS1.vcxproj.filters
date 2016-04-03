@@ -33,7 +33,7 @@
     <ClCompile Include="AmaProduct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AmaPerishableTester.cpp">
+    <ClCompile Include="AmaProductTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

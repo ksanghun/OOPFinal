@@ -12,8 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmaPerishable.cpp" />
-    <ClCompile Include="AmaPerishableTester.cpp" />
     <ClCompile Include="AmaProduct.cpp" />
+    <ClCompile Include="AmaProductTester.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="MyFile.cpp" />
