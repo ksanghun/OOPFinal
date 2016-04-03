@@ -27,7 +27,13 @@
     <ClCompile Include="Product.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ms4Tester.cpp">
+    <ClCompile Include="AmaPerishable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AmaProduct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AmaPerishableTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Product.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmaPerishable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmaProduct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

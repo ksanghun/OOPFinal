@@ -11,13 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AmaPerishable.cpp" />
+    <ClCompile Include="AmaPerishableTester.cpp" />
+    <ClCompile Include="AmaProduct.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
-    <ClCompile Include="ms4Tester.cpp" />
     <ClCompile Include="MyFile.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmaPerishable.h" />
+    <ClInclude Include="AmaProduct.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="general.h" />

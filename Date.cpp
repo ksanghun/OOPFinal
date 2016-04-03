@@ -117,7 +117,7 @@ namespace sict{
 
 	//member IO functoin : 
 	istream& Date::read(istream& istr)
-	{
+	{		
 		char ch;
 		istr >> year_ >> ch >> mon_ >> ch >> day_;
 		if (cin.fail()){
@@ -130,8 +130,8 @@ namespace sict{
 	}
 	ostream& Date::write(ostream& ostr)const
 	{
-		ostr << year_ << '/' << setw(2) << setfill('0') << mon_ 
-					  << '/' << setw(2) << setfill('0') << day_;
+		ostr << year_ << '/' << setw(2) << setfill('-') << mon_ 
+					  << '/' << setw(2) << day_ << setfill(' ');
 		return ostr;
 	}
 
