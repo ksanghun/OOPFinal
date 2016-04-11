@@ -54,7 +54,7 @@ namespace sict{
 		quantity(atoi(readBuff));
 		file.getline(readBuff, 128, ',');
 		unit(readBuff);
-		file.getline(readBuff, 128, ',');
+		file.getline(readBuff, 128, '\n');
 		qtyNeeded(atoi(readBuff));
 
 

@@ -33,7 +33,10 @@
     <ClCompile Include="AmaProduct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AmaProductTester.cpp">
+    <ClCompile Include="AidApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aidAppMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AmaProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AidApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,15 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AidApp.cpp" />
+    <ClCompile Include="aidAppMain.cpp" />
     <ClCompile Include="AmaPerishable.cpp" />
     <ClCompile Include="AmaProduct.cpp" />
-    <ClCompile Include="AmaProductTester.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ErrorMessage.cpp" />
     <ClCompile Include="MyFile.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AidApp.h" />
     <ClInclude Include="AmaPerishable.h" />
     <ClInclude Include="AmaProduct.h" />
     <ClInclude Include="Date.h" />
