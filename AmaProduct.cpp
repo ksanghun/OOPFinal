@@ -41,6 +41,7 @@ namespace sict{
 	fstream& AmaProduct::load(fstream& file)
 	{
 		char readBuff[128];
+		int readInt;
 
 		file.getline(readBuff, 128, ',');
 		sku(readBuff);
@@ -54,9 +55,13 @@ namespace sict{
 		quantity(atoi(readBuff));
 		file.getline(readBuff, 128, ',');
 		unit(readBuff);
-		file.getline(readBuff, 128, '\n');
-		qtyNeeded(atoi(readBuff));
+	//	file.getline(readBuff, 128, ',');
+	//	qtyNeeded(atoi(readBuff));
 
+		file >> readInt;
+		qtyNeeded(readInt);
+		
+		file.ignore();
 
 		return file;
 	}

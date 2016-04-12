@@ -130,7 +130,7 @@ namespace sict{
 	}
 	ostream& Date::write(ostream& ostr)const
 	{
-		ostr << year_ << '/' << setw(2) << setfill('-') << mon_ 
+		ostr << year_ << '/' << setw(2) << setfill('0') << mon_ 
 					  << '/' << setw(2) << day_ << setfill(' ');
 		return ostr;
 	}

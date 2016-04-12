@@ -11,6 +11,7 @@
 #include "Product.h"
 #include "ErrorMessage.h"
 
+
 namespace sict{
 	class AidApp{
 		char filename_[256];
@@ -35,4 +36,4 @@ namespace sict{
 
 }
 
-#endif SICT_AIDAPP_H__
+#endif

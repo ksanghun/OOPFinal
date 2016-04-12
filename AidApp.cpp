@@ -10,8 +10,9 @@
 using namespace std;
 #include "AidApp.h"
 #include <string.h>
-
 #include "AmaPerishable.h"
+
+
 
 
 namespace sict{
@@ -37,10 +38,10 @@ namespace sict{
 
 	void AidApp::pause() const
 	{
+		cout << endl;
 		cout << "Press Enter to continue..." << endl;
-		while (cin.get() != '\n'){
-			cin.ignore(2000, '\n');
-		}
+		cin.ignore(2000, '\n');
+		while (cin.get() != '\n');	
 	}
 
 	int AidApp::menu()
@@ -48,12 +49,12 @@ namespace sict{
 		int selId = -1;
 
 		cout << "Disaster Aid Supply Management Program" << endl;
-		cout << "1 - List products" << endl;
-		cout << "2 - Display product" << endl;
-		cout << "3 - Add non-perishable product" << endl;
-		cout << "4 - Add perishable product" << endl;
-		cout << "5 - Add to quantity of purchased products" << endl;
-		cout << "0 - Exit program" << endl;
+		cout << "1- List products" << endl;
+		cout << "2- Display product" << endl;
+		cout << "3- Add non-perishable product" << endl;
+		cout << "4- Add perishable product" << endl;
+		cout << "5- Add to quantity of purchased products" << endl;
+		cout << "0- Exit program" << endl;
 		cin >> selId;
 
 		if (cin.fail() || (selId < 0) || (selId > 5)){
@@ -65,60 +66,54 @@ namespace sict{
 
 	void AidApp::loadRecs()
 	{		
-		fstream file;
-		char readBuff[256];
-		
-		file.open(filename_, ios::in);
-		if (file.fail()){
-			file.clear();
-			file.close();
+		datafile_.open(filename_, ios::in);
+		if (datafile_.fail()){
+			datafile_.clear();
+			datafile_.close();
 
-			file.open(filename_, ios::out);
-			file.close();
+			datafile_.open(filename_, ios::out);
+			datafile_.close();
 		}
 		else{	
 			int readIndex = 0;	
 			char ch;
-			while (!file.get(ch).fail()){
-	//		while (!file.eof()){					
-	//			file.get(ch);
-				file.ignore(1);
-
+			while (!datafile_.get(ch).fail()){
+				datafile_.ignore();
 
 				delete product_[readIndex];
 				if (ch == 'P'){
 					AmaPerishable* pitem = new AmaPerishable;
-					pitem->load(file);
+					pitem->load(datafile_);
 					product_[readIndex] = pitem;
 					readIndex++;
 				}
 				else if (ch == 'N'){
 					AmaProduct* pitem = new AmaProduct;
-					pitem->load(file);
+					pitem->load(datafile_);
 					product_[readIndex] = pitem;
 					readIndex++;
 				}				
 			}
 			noOfProducts_ += readIndex;
-		}
-
-		
+			datafile_.close();
+		}		
 	}
 
 	void AidApp::saveRecs()
 	{
-		fstream file;
-		file.open(filename_, ios::out);
+	//	fstream file;
+		datafile_.open(filename_, ios::out);
 
 		int i = 0;
 		for (i = 0; i < noOfProducts_; i++){
-			product_[i]->store(file);
+			product_[i]->store(datafile_);
 		}
-		file.close();
+		datafile_.close();
 	}
 
 	void AidApp::listProducts() const
 	{
+		cout << endl;
 		cout << setw(6) << left << " Row" << "|"
 			<< setw(MAX_SKU_LEN+1) << left << " SKU" << "|"
 			<< setw(20) << left << "  Product Name" << "|"
@@ -140,19 +135,19 @@ namespace sict{
 
 		int i = 0; 
 		double totalCost = 0;
-		int printed = 0;
+		
 		for (i = 0; i < noOfProducts_; i++){
-			cout << setw(5) << left << i << " | ";
+			cout << setw(5) << left << (i+1) << " | ";
 			product_[i]->write(cout, true) << endl;
-			printed++;
-			if (printed == 10){
+			
+			if ((i+1)%10 == 0){
 				pause();
-				printed = 0;
 			}
-
+			totalCost += product_[i]->cost() * product_[i]->quantity();
 		}
 
-		
+		cout << "---------------------------------------------------------------------------" << endl;
+		cout << "Total cost of support: " << fixed << setprecision(2) << "$" << totalCost << endl;
 	}
 
 	int AidApp::SearchProducts(const char* sku)const
@@ -174,7 +169,7 @@ namespace sict{
 			int addCnt = 0;
 			cout << "Please enter the number of purchased items: ";
 			cin >> addCnt;
-			while (!cin.fail()){
+			while (cin.fail()){
 				cout << "Invalid quantity value!" << endl;
 				cout << "Please enter the number of purchased items: ";
 				cin >> addCnt;
@@ -208,9 +203,10 @@ namespace sict{
 			pProd = new AmaProduct;
 		}
 		pProd->read(cin);
-		product_[noOfProducts_] = pProd;
-		noOfProducts_++;
-
+		if (!cin.fail()){
+			product_[noOfProducts_] = pProd;
+			noOfProducts_++;
+		}
 		saveRecs();
 	}
 
@@ -228,6 +224,7 @@ namespace sict{
 				break;
 			case 1:
 				listProducts();
+				pause();
 				selid = menu();
 				break;
 			case 2:
